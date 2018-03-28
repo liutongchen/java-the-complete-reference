@@ -56,5 +56,7 @@ class TestStack {
         for (int i = 0; i < stack2Len; i++) {
             System.out.println(mystack2.pop());
         }
+
+
     }
 }
