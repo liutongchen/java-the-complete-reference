@@ -81,6 +81,39 @@ class FixedStack implements IntStack {
     }
 }
 
+class DynamicStack implements IntStack {
+    private int stck[];
+    private int total;
+
+    DynamicStack(int size) {
+        stck = new int[size];
+        total = 0;
+    }
+
+    public void push(int item) {
+        int stckLen = stck.length;
+
+        if (total == stckLen) {
+            int[] temp = new int[stckLen * 2];
+            for (int i = 0; i < stckLen; i++) {
+                temp[i] = stck[i];
+            }
+            stck = temp;
+            stck[total++] = item;
+        } else {
+            stck[total++] = item;
+        }
+    }
+
+    public int pop() {
+        if (total < 0) {
+            System.out.println("Stack underflow.");
+            return 0;
+        } else {
+            return stck[--total];
+        }
+    }
+}
 
 class interfaceDemo {
     public static void main(String args[]) {
@@ -96,27 +129,27 @@ class interfaceDemo {
 //        if (nif.isNotNegative(10)) {
 //            System.out.println("10 is not negative");
 //        }
-
+1 + 3 * 5
         //------stack interface---------
-        FixedStack mystack1 = new FixedStack(5);
-        FixedStack mystack2 = new FixedStack(8);
+        FixedStack myFixedStack = new FixedStack(5);
+        DynamicStack myDynStack = new DynamicStack(8);
 
         // push some numbers onto the stack
         for (int i = 0; i < 5; i++) {
-            mystack1.push(i);
+            myFixedStack.push(i);
         }
-        for (int i = 0; i < 8; i++) {
-            mystack2.push(i);
+        for (int i = 0; i < 18; i++) {
+            myDynStack.push(i);
         }
 
         //pop those numbers off the stack
-        System.out.println("Stack in mystack1");
+        System.out.println("Stack in myFixedStack");
         for (int i = 0; i < 5; i++) {
-            System.out.println(mystack1.pop());
+            System.out.println(myFixedStack.pop());
         }
-        System.out.println("Stack in mystack2");
-        for (int i = 0; i < 8; i++) {
-            System.out.println(mystack2.pop());
+        System.out.println("Stack in myDynStack");
+        for (int i = 0; i < 18; i++) {
+            System.out.println(myDynStack.pop());
         }
     }
 }
