@@ -102,7 +102,7 @@ class Consumer implements Runnable {
 
 class SyncThreadDemo {
     public static void main(String args[]) {
-        // using synchronized method on objRef
+        // --------using synchronized method on objRef----------
 
 //        Callme target = new Callme();
 //        Caller obj1 = new Caller(target, "Hello");
@@ -134,5 +134,6 @@ class SyncThreadDemo {
         c.t.start();
 
         System.out.println("Press Control-C to strop.");
+
     }
 }
